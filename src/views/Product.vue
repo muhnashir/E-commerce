@@ -49,9 +49,9 @@
                                     <h4>Rp.{{ productDetails.price}}</h4>
                                 </div>
                                 <div class="quantity">
-                                    <!-- <router-link to="/cart"> -->
+                                    <router-link to="/cart">
                                         <a @click="saveKeranjang(productDetails.id,productDetails.name, productDetails.price, productDetails.galleries[0].photo)" href="#" class="primary-btn pd-cart">Add To Cart</a>
-                                    <!-- </router-link> -->
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +90,7 @@ export default {
     return {
       gb_default: "",
       productDetails: [],
-      keranjangUSer : []
+      keranjangUser : []
     }
   },
   methods: {
@@ -113,17 +113,17 @@ export default {
             "photo" : photoProduct,
 
         }
-        this.keranjangUSer.push(productStore);
-        const parsed = JSON.stringify(this.keranjangUSer);
-        localStorage.setItem('keranjangUSer', parsed);
+        this.keranjangUser.push(productStore);
+        const parsed = JSON.stringify(this.keranjangUser);
+        localStorage.setItem('keranjangUser', parsed);
     }
   },
   mounted(){
-        if (localStorage.getItem('keranjangUSer')) {
+        if (localStorage.getItem('keranjangUser')) {
             try {
-                this.keranjangUSer = JSON.parse(localStorage.getItem('keranjangUSer'));
+                this.keranjangUser = JSON.parse(localStorage.getItem('keranjangUser'));
             } catch(e) {
-                localStorage.removeItem('keranjangUSer');
+                localStorage.removeItem('keranjangUser');
             }
         }
         axios
